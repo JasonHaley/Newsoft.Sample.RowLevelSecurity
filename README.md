@@ -34,4 +34,6 @@ public void SetTenantIdFromClaim()
 
 I also added an override for SaveChangesAsync().
 
+NOTE:
+
 You will need to modify the web.config connection string to point at your local database in order to get the demo working.  I have assumed you already had David Berube's sample up and running (starting with the Northwind backup file he provided).
