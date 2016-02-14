@@ -1,0 +1,24 @@
+﻿@using System.Web.UI.WebControls
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div class="row">
+    @if (!User.Identity.IsAuthenticated)
+    {
+        <div>Login to see your employees</div>
+    }
+
+    @if (ViewBag.Employees != null)
+    {
+        <h1>Employees</h1>
+        foreach (var employee in ViewBag.Employees)
+        {
+            <div>
+                <span>@employee.FirstName </span>
+                <span>@employee.LastName </span>
+            </div>
+        }
+    }
+</div>

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Dynamic;
-
+using System.Security.Claims;
 using EntityFramework.DynamicFilters;
 
 namespace Newsoft.Sample.RowLevelSecurity.DAL
@@ -30,6 +30,21 @@ namespace Newsoft.Sample.RowLevelSecurity.DAL
         protected internal virtual void Init()
         {
             this.InitializeDynamicFilters();
+            SetTenantIdFromClaim();
+        }
+
+        public void SetTenantIdFromClaim()
+        {
+            var user = System.Threading.Thread.CurrentPrincipal;
+            if (user.Identity.IsAuthenticated && user is ClaimsPrincipal)
+            {
+                var tenantIdClaim = ((ClaimsPrincipal)user).FindFirst(c => c.Type == "TenantId");
+                if (tenantIdClaim != null)
+                {
+                    var id = tenantIdClaim.Value;
+                    SetTenantId(Guid.Parse(id));
+                }
+            }
         }
 
         Guid? _currentTenantId = null; 
@@ -74,6 +89,22 @@ namespace Newsoft.Sample.RowLevelSecurity.DAL
             }
 
             return base.SaveChanges();
+        }
+
+        public override Task<int> SaveChangesAsync()
+        {
+            var createdEntries = GetCreatedEntries();
+
+            if (createdEntries.Any())
+            {
+                foreach (var createdEntry in createdEntries)
+                {
+                    var iSecuredByTenantEntry = createdEntry.Entity as ISecuredByTenant;
+                    if (iSecuredByTenantEntry != null)
+                        iSecuredByTenantEntry.SecuredByTenantId = _currentTenantId;
+                }
+            }
+            return base.SaveChangesAsync();
         }
 
         private IEnumerable<DbEntityEntry> GetCreatedEntries()

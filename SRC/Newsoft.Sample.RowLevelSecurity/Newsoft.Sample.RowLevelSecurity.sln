@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Newsoft.Sample.RowLevelSecurity", "Newsoft.Sample.RowLevelSecurity.csproj", "{973AAB12-E105-4803-9886-6DD91B8AC885}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Newsoft.Sample.RowLevelSecurity.Web", "..\Newsoft.Sample.RowLevelSecurity.Web\Newsoft.Sample.RowLevelSecurity.Web.csproj", "{C2D46813-3DC4-48F2-A069-D0D27A1ADC27}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{973AAB12-E105-4803-9886-6DD91B8AC885}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{973AAB12-E105-4803-9886-6DD91B8AC885}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{973AAB12-E105-4803-9886-6DD91B8AC885}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2D46813-3DC4-48F2-A069-D0D27A1ADC27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2D46813-3DC4-48F2-A069-D0D27A1ADC27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2D46813-3DC4-48F2-A069-D0D27A1ADC27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2D46813-3DC4-48F2-A069-D0D27A1ADC27}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
