@@ -1,4 +1,4 @@
-# Fork of Newsoft.Sample.RowLevelSecurity
+# Fork of Newsoft.Sample.RowLevelSecurity with a Web Project
 A demo of row level security in entity framework 6 with an added Web Project to demo how to pull the tenantId from the claims on a user.
 
 The Web project is just the plain New Web Project Template of a MVC App with authentication turned on.  
